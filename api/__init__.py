@@ -1,2 +1,2 @@
 from .api import ApiWrapper
-from .entity import Spot, Route
+from .entity import Spot, Route, Photo
