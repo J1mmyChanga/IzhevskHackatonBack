@@ -6,16 +6,26 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+    <link rel="stylesheet" href="/static/css/tours.css">
 
-    <title>SmolenskTour | {{ title }}</title> <!-- Здесь тайтл передаётся в шаблонизатор -->
+
+    <title>SmolenskTour | {{ title }}</title>
 </head>
 <body>
-<!-- Шапка -->
     <header>
+        <span class="logo">logo</span>
+        <div class="menu">
+            <a href="/tours">Туры</a>
+            <a href="">О нас</a>
+            <a href="">Спонсоры</a>
+        </div>
 
     </header>
-
+<main>
+    {% block content %}{% endblock %}
+</main>
 <!-- Футер -->
     <footer>
 
