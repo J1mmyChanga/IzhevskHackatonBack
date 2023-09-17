@@ -1,53 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="../static/css/base.css">
-    <link rel="stylesheet" href="../static/css/tour.css">
+{% block links%}
+    <link rel="stylesheet" href="/static/css/tour.css">
+{% endblock %}
 
-    <title>Document</title>
-</head>
-<body>
-<!-- Шапка -->
-    <header>
-        <span class="logo">logo</span>
-        <div class="menu">
-            <a href="">Туры</a>
-            <a href="">О нас</a>
-            <a href="">Спонсоры</a>
-        </div>
-    </header>
-
-
-<!-- Главна часть -->
-    <main>
-
-        <h1 class="header">К ИСТОКУ ДНЕПРА</h1>
-
-        <section>
-
-            <img src="../static/img/hav8ozwd4y4-292x195-872.jpg" alt="">
-            
-            <span class="duration">Продолжительность 1 день</span>
-
-            <span class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, doloribus, dolorum. Amet, quo, unde. Accusamus at, blanditiis consectetur excepturi facilis maiores nam nobis officiis quisquam ratione saepe ullam ut, veritatis?</span>
-
-            <div class="spots">
-                <h3>Основные точки маршрута</h3>
-                <ul>
-                    <li>asfsaf</li>
-                    <li>asfa</li>
-                </ul>
-
-            </div>
-
-
-        </section>
-
-    </main>
-</body>
-</html>
+{% block content %}
+    <h1 class="header">{{tour.title}}</h1>
+    <section>
+        <img src="/static/img/{{ photo }}" alt="">
+        <span class="duration">Продолжительность: {{tour.duration}} часа</span>
+        <span class="description">{{tour.description}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, doloribus, dolorum. Amet, quo, unde. Accusamus at, blanditiis consectetur excepturi facilis maiores nam nobis officiis quisquam ratione saepe ullam ut, veritatis?</span>
+    </section>
+{% endblock %}

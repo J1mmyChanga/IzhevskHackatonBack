@@ -35,6 +35,14 @@ def tours():
     return render_template("tours.html", **params)
 
 
+@app.route("/tour/<string:id>/", methods=['GET'])
+def tour(id):
+    tour = api.user.get(id, Route)
+    photo = api.photo.get(id).data
+    params = {'request': request, 'title': 'Typ', 'tour': tour, 'photo': photo}
+    return render_template("tour.html", **params)
+
+
 def main():
     app.run(debug=True)
 
