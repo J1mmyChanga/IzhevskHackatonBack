@@ -1,18 +1,81 @@
-{% extends "base.html" %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-{% block content %}
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/tours.css">
+
+    <title>Document</title>
+</head>
+<body>
+<!-- Шапка -->
+    <header>
+        <span class="logo">logo</span>
+        <div class="menu">
+            <a href="">Туры</a>
+            <a href="">О нас</a>
+            <a href="">Спонсоры</a>
+        </div>
+
+    </header>
+<!-- Главня часть -->
+    <main>
+
+        <div class="filter">
+            <form action="" method="POST">
+                <input class="search__input" type="text" name="search_data" placeholder="Название тура...">
+                <div class="checkbox__filter">
+                    <label for="of">Официальные</label>
+                    <input type="checkbox" name="official_tours" id="of">
+                </div>
+                <div class="checkbox__filter">
+                    <label for="us">Пользовтельские</label>
+                    <input type="checkbox" name="user_tours" id="us">
+                </div>
+                <input class="search__button" type="submit" value="🔍">
+            </form>
+        </div>
+
         <section>
+            <article>
 
-            <h3 class="header">Официальные туры</h3>
+                <img src="assets/img/hav8ozwd4y4-292x195-872.jpg" alt="">
 
-            <div class="slider">
-                <button class="left"><</button>
-                <article></article>
-                <article></article>
-                <article></article>
-                <button class="right">></button>
-            </div>
+                <div class="content">
 
+                    <h3>К ИСТОКУ ДНЕПРА</h3>
 
+                    <a class="hashtag" href="">#ПутешествияПоСмоленску!</a>
+
+                    <span class="duration">Продолжительность 1 день</span>
+
+                    <a class="btn">Подробнее</a>
+                </div>
+                
+            </article>
+            <article></article>
+            <article></article>
         </section>
-{% endblock %}
+
+
+        <section>
+            <article></article>
+            <article></article>
+            <article></article>
+        </section>
+
+
+        <section>
+            <article></article>
+            <article></article>
+            <article></article>
+        </section>
+
+
+    </main>
+</body>
+</html>

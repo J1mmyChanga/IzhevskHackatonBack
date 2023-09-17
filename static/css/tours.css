@@ -7,29 +7,125 @@ main {
     flex-direction: column;
 }
 
-section {
-    width: 100%;
-    height: 70vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-}
-section .header {
-    font-size: 1.7em;
-}
 
-.slider {
-    height: 75%;
-    width: 80%;
+.filter {
+    margin-top: 5%;
+    width: 65%;
+    height: 60px;
+    border-radius: 10px;
+    /*box-shadow: 1px 1px 5px lightgray;*/
+    display: flex;
+    justify-content: center;
+}
+.filter form {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+.filter form .checkbox__filter {
+    display: flex;
+    gap: 10px;
+}
+.filter form input {
+    /*height: 100%;*/
+    border: none;
+    background: none;
+    box-shadow: 1px 1px 5px lightgray;
+    border-radius: 5px;
+    font-size: 1em;
+    outline: none;
+}
 
-.slider article {
+.filter form .search__input {
+    padding: 20px;
+    width: 50%;
+}
+.filter form .search__button {
+    cursor: pointer;
+    padding: 20px 45px;
+    border-radius: 20px;
+    background: #EDCC9B;
+    transition: .4s;
+}
+.filter form .search__button:hover {
+    background: #4D2525;
+    transition: .4s;
+}
+
+section {
+    margin-top: 5%;
+    width: 65%;
+    height: 50vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+section article {
     height: 100%;
     width: 30%;
-    background: red;
+    /*background: red;*/
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px lightgray;
+    transition: .4s;
+}
+section article:hover {
+    cursor: pointer;
+    transition: .4s;
+    transform: translate(-7%, -7%);
+}
+section article img {
+    height: 200px;
+    width: 100%;
     border-radius: 10px;
 }
+section article .content {
+    padding: 25px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 25px;
+}
+section article .content h3 {
+    color: gray;
+    font-size: 1.3em;
+    font-weight: bold;
+
+}
+section article .content .hashtag {
+    color: cadetblue;
+    font-style: italic;
+    font-size: 1em;
+}
+section article .content .duration {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+section article .content .btn {
+    padding: 15px 35px;
+    border-radius: 15px;
+    background: #EDCC9B;
+    color: #4D2525;
+    font-weight: bold;
+    font-size: 1em;
+}
+/*section .header {*/
+/*    font-size: 1.7em;*/
+/*}*/
+
+/*.slider {*/
+/*    height: 75%;*/
+/*    width: 80%;*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*}*/
+
+/*.slider article {*/
+/*    height: 100%;*/
+/*    width: 30%;*/
+/*    background: red;*/
+/*    border-radius: 10px;*/
+/*}*/
