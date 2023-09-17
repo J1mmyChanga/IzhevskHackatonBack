@@ -11,24 +11,24 @@
                 <input class="search__input" type="text" name="search_data" placeholder="Название тура...">
                 <div class="checkbox__filter">
                     <label for="of">Официальные</label>
-                    <input type="checkbox" name="official_tours" id="of">
+                    <input value="of" type="checkbox" name="tours" id="of">
                 </div>
                 <div class="checkbox__filter">
                     <label for="us">Пользовтельские</label>
-                    <input type="checkbox" name="user_tours" id="us">
+                    <input value="us" type="checkbox" name="tours" id="us">
                 </div>
                 <input class="search__button" type="submit" value="🔍">
             </form>
         </div>
         {% for section in tours %}
         <section>
-            {% for section in tours %}
+            {% for elem in section %}
                 <article>
-                    <img src="static/img/hav8ozwd4y4-292x195-872.jpg" alt="">
+                    <img src="static/img/{{ dict[elem.id] }}" alt="">
                     <div class="content">
-                        <h3>К ИСТОКУ ДНЕПРА</h3>
+                        <h3>{{elem.title}}</h3>
                         <a class="hashtag" href="">#ПутешествияПоСмоленску!</a>
-                        <span class="duration">Продолжительность 1 день</span>
+                        <span class="duration">Продолжительность: {{elem.duration}} часов</span>
                         <a class="btn">Подробнее</a>
                     </div>
                 </article>

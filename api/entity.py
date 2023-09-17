@@ -13,16 +13,20 @@ class ApiEntity(AbstractApiEntity):
 
 
 class Route(ApiEntity):
-    def __init__(self, route_id: str, title: str, description: str):
+    def __init__(self, route_id: str, title: str, description: str, activated: bool, duration: int):
         self.id = route_id
         self.title = title
         self.description = description
+        self.activated = activated
+        self.duration = duration
 
     def as_json(self) -> dict:
         return {
             "id": self.id,
             "title": self.title,
-            "description": self.description
+            "description": self.description,
+            'activated': self.activated,
+            'duration': self.duration
         }
 
     @staticmethod
@@ -31,12 +35,14 @@ class Route(ApiEntity):
         return Route(
             json_entity["id"],
             json_entity["title"],
-            json_entity["description"]
+            json_entity["description"],
+            json_entity["activated"],
+            json_entity["duration"]
         )
 
     @staticmethod
-    def create(title: str, description: str) -> AbstractApiEntity:
-        return Route("", title, description)
+    def create(title: str, description: str, activated: bool, duration: int) -> AbstractApiEntity:
+        return Route("", title, description, activated, duration)
 
 
 class Spot(ApiEntity):

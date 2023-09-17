@@ -1,37 +1,44 @@
 import requests
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+from flask import Flask, render_template, redirect, url_for, request, abort, session
 
-from api import ApiWrapper
 
-app = FastAPI()
+from api import ApiWrapper, Route
+
+app = Flask(__name__)
 api = ApiWrapper("https://backend.cube-hackaton.ru")
-templates = Jinja2Templates(directory="templates")
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-
-@app.get("/", response_class=HTMLResponse)
-async def index(request: Request):
+@app.route("/")
+def index():
     params = {'request': request, 'title': 'Главная'}
-    return templates.TemplateResponse("index.html", params)
+    return render_template("index.html", **params)
 
 
-@app.get("/tours", response_class=HTMLResponse)
-async def tours(request: Request):
-    user_tours = []
-    of_tours = []
-    tours = []
-    for i in tours:
-        if i.flag == True:
-            user_tours.append(i)
-            continue
-        of_tours.append(i)
-    user_tours = [user_tours[i:i + 3] for i in range(0, len(user_tours), 3)]
-    of_tours = [of_tours[i:i + 3] for i in range(0, len(of_tours), 3)]
+@app.route("/tours", methods=['GET', 'POST'])
+def tours():
+    res = []
+    flag = True
+    dict = {}
+    # for i in photos:
+    #     dict[i.route_id] = i.data
+    tours = api.user.get_all(Route)
+    if request.method == 'POST':
+        checkboxes = request.form.getlist('tours')
+        if checkboxes:
+            if len(checkboxes) != 2:
+                if 'us' in checkboxes:
+                    flag = False
+                for i in tours:
+                    if i.activated == flag:
+                        res.append(i)
+                tours = res
     tours = [tours[i:i + 3] for i in range(0, len(tours), 3)]
-    params = {'request': request, 'title': 'Туры', 'user_tours': user_tours, 'of_tours': of_tours, 'tours': tours}
-    requests.get("http://127.0.0.1:8000/api/getLooks/").json()
-    return templates.TemplateResponse("tours.html", params)
+    params = {'request': request, 'title': 'Туры', 'tours': tours, 'dict': dict}
+    return render_template("tours.html", **params)
+
+
+def main():
+    app.run(debug=True)
+
+
+if __name__ == '__main__':
+    main()
