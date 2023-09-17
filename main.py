@@ -47,6 +47,7 @@ def tour(id):
 def create_tour():
     return render_template("form.html")
 
+
 def main():
     app.run(debug=True)
 
