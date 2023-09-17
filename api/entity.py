@@ -31,7 +31,6 @@ class Route(ApiEntity):
 
     @staticmethod
     def from_json(json_entity: dict):
-        print(json_entity)
         return Route(
             json_entity["id"],
             json_entity["title"],
@@ -78,3 +77,32 @@ class Spot(ApiEntity):
     @staticmethod
     def create(route_id: str, title: str, description: str, lon: int, lat: int) -> AbstractApiEntity:
         return Spot(route_id, "", title, description, lon, lat)
+
+
+class Photo(ApiEntity):
+    def __init__(self, route_id: str, photo_id: str, name: str, data: str):
+        self.id = photo_id
+        self.route_id = route_id
+        self.name = name
+        self.data = data
+
+    def as_json(self) -> dict:
+        return {
+            "route_id": self.route_id,
+            "id": self.id,
+            "data": self.data,
+            "name": self.name
+        }
+
+    @staticmethod
+    def from_json(json_entity: dict) -> AbstractApiEntity:
+        return Photo(
+            json_entity["route_id"],
+            json_entity["id"],
+            json_entity["name"],
+            json_entity["data"]
+        )
+
+    @staticmethod
+    def create(route_id: str, name: str, data: str) -> AbstractApiEntity:
+        return Photo(route_id, "", name, data)

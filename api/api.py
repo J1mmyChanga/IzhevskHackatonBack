@@ -2,6 +2,7 @@ import requests
 from typing import Type, List
 
 from .entity import *
+from .entity import AbstractApiEntity
 
 
 class AbstractApi:
@@ -47,10 +48,25 @@ class AdminApi(AbstractApi):
         )
 
 
+class PhotoApi(AbstractApi):
+    def upload(self, photo: Photo):
+        self.session.post(
+            f"{self.api_url}/photos/upload",
+            json=photo.as_json()
+        )
+
+    def get(self, route_id: str) -> AbstractApiEntity:
+        return Photo.from_json(self.session.post(
+            f"{self.api_url}/photos/get",
+            json={"route_id": route_id}
+        ).json())
+
+
 class ApiWrapper:
     def __init__(self, url: str):
         self._admin = AdminApi(url)
         self._user = UserApi(url)
+        self._photo = PhotoApi(url)
 
     @property
     def admin(self):
@@ -59,3 +75,7 @@ class ApiWrapper:
     @property
     def user(self):
         return self._user
+
+    @property
+    def photo(self):
+        return self._photo

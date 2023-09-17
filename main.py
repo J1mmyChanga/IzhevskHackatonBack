@@ -1,11 +1,10 @@
-import requests
-from flask import Flask, render_template, redirect, url_for, request, abort, session
-
+from flask import Flask, render_template, request
 
 from api import ApiWrapper, Route
 
 app = Flask(__name__)
 api = ApiWrapper("https://backend.cube-hackaton.ru")
+
 
 @app.route("/")
 def index():
