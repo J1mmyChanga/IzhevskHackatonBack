@@ -47,10 +47,19 @@ section {
     transition: .4s;
 }
 .about {
+    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 25px;
+    gap: 50px;
     padding: 25px;
+}
+
+.about h3 {
+    font-size: 3em;
+}
+.about span {
+    font-size: 1.2em;
+    padding: 0 300px;
 }
