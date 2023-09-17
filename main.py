@@ -1,22 +1,43 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+from flask import Flask, render_template, request
 
-app = FastAPI()
+from api import ApiWrapper, Route
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
-
-templates = Jinja2Templates(directory="templates")
+app = Flask(__name__)
+api = ApiWrapper("https://backend.cube-hackaton.ru")
 
 
-@app.get("/", response_class=HTMLResponse)
-async def index(request: Request):
+@app.route("/")
+def index():
     params = {'request': request, 'title': 'Главная'}
-    return templates.TemplateResponse("index.html", params)
+    return render_template("index.html", **params)
 
 
-@app.get("/tours", response_class=HTMLResponse)
-async def tours(request: Request):
-    params = {'request': request, 'title': 'Туры', "message": f"Hello {'Туры'}"}
-    return templates.TemplateResponse("tours.html", params)
+@app.route("/tours", methods=['GET', 'POST'])
+def tours():
+    res = []
+    flag = True
+    dict = {}
+    # for i in photos:
+    #     dict[i.route_id] = i.data
+    tours = api.user.get_all(Route)
+    if request.method == 'POST':
+        checkboxes = request.form.getlist('tours')
+        if checkboxes:
+            if len(checkboxes) != 2:
+                if 'us' in checkboxes:
+                    flag = False
+                for i in tours:
+                    if i.activated == flag:
+                        res.append(i)
+                tours = res
+    tours = [tours[i:i + 3] for i in range(0, len(tours), 3)]
+    params = {'request': request, 'title': 'Туры', 'tours': tours, 'dict': dict}
+    return render_template("tours.html", **params)
+
+
+def main():
+    app.run(debug=True)
+
+
+if __name__ == '__main__':
+    main()
