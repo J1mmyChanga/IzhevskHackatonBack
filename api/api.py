@@ -36,13 +36,13 @@ class UserApi(AbstractApi):
 class AdminApi(AbstractApi):
     def update(self, api_entity: ApiEntity):
         self.session.post(
-            f"{self.api_url}/admin/{api_entity.__class__.__name__.lower()}/update",
+            f"{self.api_url}/admin/{api_entity.__class__.__name__.lower()}s/update",
             json=api_entity.as_json()
         )
 
     def delete(self, api_entity: ApiEntity):
         self.session.post(
-            f"{self.api_url}/admin/{api_entity.__class__.__name__.lower()}/update",
+            f"{self.api_url}/admin/{api_entity.__class__.__name__.lower()}s/update",
             json={"id": api_entity.id}
         )
 
