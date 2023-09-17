@@ -15,6 +15,7 @@ section {
     align-items: flex-start;
     flex-direction: column;
     gap: 30px;
+    padding: 160px;
 }
 section img {
     width: 60%;
