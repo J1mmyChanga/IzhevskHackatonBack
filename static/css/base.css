@@ -20,6 +20,13 @@ header {
     align-items: center;
     z-index: 1000;
 }
+.logo {
+    color: white;
+    font-size: 2em;
+    font-style: italic;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
 .menu {
     width: 17%;
     display: flex;
