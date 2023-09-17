@@ -43,7 +43,7 @@ def tour(id):
     return render_template("tour.html", **params)
 
 
-@app.route('/create')
+@app.route('/create', methods=['GET', 'POST'])
 def create_tour():
     return render_template("form.html")
 
