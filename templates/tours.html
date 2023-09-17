@@ -24,12 +24,12 @@
         <section>
             {% for elem in section %}
                 <article>
-                    <img src="static/img/{{ dict[elem.id] }}" alt="">
+                    <img src="static/img/{{ dict[elem.id].data }}" alt="">
                     <div class="content">
                         <h3>{{elem.title}}</h3>
                         <a class="hashtag" href="">#ПутешествияПоСмоленску!</a>
                         <span class="duration">Продолжительность: {{elem.duration}} часов</span>
-                        <a class="btn">Подробнее</a>
+                        <a class="btn" href="/">Подробнее</a>
                     </div>
                 </article>
             {% endfor %}

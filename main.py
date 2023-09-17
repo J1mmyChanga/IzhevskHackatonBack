@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from api import ApiWrapper, Route
+from api import ApiWrapper, Route, Photo
 
 app = Flask(__name__)
 api = ApiWrapper("https://backend.cube-hackaton.ru")
@@ -17,9 +17,9 @@ def tours():
     res = []
     flag = True
     dict = {}
-    # for i in photos:
-    #     dict[i.route_id] = i.data
     tours = api.user.get_all(Route)
+    for i in tours:
+        dict[i.id] = api.photo.get(i.id)
     if request.method == 'POST':
         checkboxes = request.form.getlist('tours')
         if checkboxes:
