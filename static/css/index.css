@@ -46,3 +46,11 @@ section {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     transition: .4s;
 }
+.about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px;
+}
