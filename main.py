@@ -1,3 +1,4 @@
+import requests
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
@@ -18,5 +19,6 @@ async def index(request: Request):
 
 @app.get("/tours", response_class=HTMLResponse)
 async def tours(request: Request):
-    params = {'request': request, 'title': 'Туры', "message": f"Hello {'Туры'}"}
+    params = {'request': request, 'title': 'Туры'}
+    requests.get("http://127.0.0.1:8000/api/getLooks/").json()
     return templates.TemplateResponse("tours.html", params)
