@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/IzhevskHackatonBack-master.iml" filepath="$PROJECT_DIR$/.idea/IzhevskHackatonBack-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IzhevskHackatonBack.iml" filepath="$PROJECT_DIR$/.idea/IzhevskHackatonBack.iml" />
     </modules>
   </component>
 </project>
